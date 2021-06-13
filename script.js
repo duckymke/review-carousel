@@ -34,19 +34,21 @@ const randomBtn = document.querySelector('.random-btn');
 // starting item
 let currentItem = 0;
 
+// load initial item
+window.addEventListener('DOMContentLoaded', function() {
+    const item = reviews[currentItem];
+    author.textContent = item.author;
+    title.textContent = item.title;
+    info.textContent = item.text;
+});
+
 // show person based on item
-function showPerson(person) {
-    const item = reviews[person];
+function showPerson(person) { // we create the function showPerson with the parameter of person
+    const item = reviews[person]; // here we create the item variable and define it with the reviews data and the person parameter
     author.textContent = item.author;
     title.textContent = item.title;
     info.textContent = item.text;
 }
-
-
-// initial item
-window.addEventListener('DOMContentLoaded', function() {
-    showPerson(currentItem);
-});
 
 // show next person item
 nextBtn.addEventListener('click', function(){
@@ -68,5 +70,5 @@ prevBtn.addEventListener('click', function(){
 // random person
 randomBtn.addEventListener('click', function(){
     currentItem = Math.floor(Math.random() * reviews.length);
-    showPerson();
+    showPerson(currentItem);
 });
